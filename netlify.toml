@@ -1,8 +1,8 @@
 # Netlify configuration — AlloyMetrix coming-soon site
 #
 # Branch  ->  Environment
-#   main  ->  production   : https://allowmetrix.in
-#   dev   ->  branch deploy: https://dev.allowmetrix.in  (served noindex)
+#   main  ->  production   : https://alloymetrix.in
+#   dev   ->  branch deploy: https://dev.alloymetrix.in  (served noindex)
 
 [build]
   command = "npm run build"

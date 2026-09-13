@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://allowmetrix.in/sitemap.xml
+Sitemap: https://alloymetrix.in/sitemap.xml

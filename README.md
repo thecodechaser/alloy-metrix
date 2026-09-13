@@ -1,6 +1,6 @@
 # AlloyMetrix — Website
 
-Coming-soon / under-development page for **allowmetrix.in**.
+Coming-soon / under-development page for **alloymetrix.in**.
 
 Built with **React 19 + Vite 7 + Tailwind CSS v4**, deployed on **Netlify**.
 
@@ -23,10 +23,10 @@ Leave `phone` as an empty string to hide the phone button.
 
 | Branch | Netlify context  | URL                    | Indexed by Google |
 | ------ | ---------------- | ---------------------- | ----------------- |
-| `dev`  | branch deploy    | https://dev.allowmetrix.in | No (`noindex`) |
-| `main` | production       | https://allowmetrix.in | Yes               |
+| `dev`  | branch deploy    | https://dev.alloymetrix.in | No (`noindex`) |
+| `main` | production       | https://alloymetrix.in | Yes               |
 
-Workflow: merge work into `dev` → client reviews on `dev.allowmetrix.in` →
+Workflow: merge work into `dev` → client reviews on `dev.alloymetrix.in` →
 merge `dev` into `main` → live on production.
 
 `npm run seo:noindex` runs automatically on every non-production deploy
@@ -43,14 +43,21 @@ so the dev site can never be indexed.
 3. **Branch deploys** — in the same screen, choose *Let me add individual
    branches* and add `dev`.
 4. **Domains** — *Domain management → Add a domain*:
-   - `allowmetrix.in` (plus the `www` alias, redirecting to the apex) → production.
-   - *Add a branch subdomain* → branch `dev`, subdomain `dev.allowmetrix.in`.
-5. **DNS** — at the registrar for `allowmetrix.in`, either delegate the domain to
-   Netlify DNS (recommended, gives automatic certificates for both names), or
-   point records manually:
-   - `@` → `A 75.2.60.5` (Netlify load balancer)
-   - `www` → `CNAME <site-name>.netlify.app`
-   - `dev` → `CNAME dev--<site-name>.netlify.app`
+   - `alloymetrix.in` (plus the `www` alias, redirecting to the apex) → production.
+   - *Add a branch subdomain* → branch `dev`, subdomain `dev.alloymetrix.in`.
+5. **DNS — stays at GoDaddy.** The domain keeps GoDaddy's nameservers
+   (`ns35`/`ns36.domaincontrol.com`) so the existing GoDaddy email records — MX,
+   SPF, DKIM, DMARC and the autodiscover SRV — keep working untouched. Do **not**
+   switch the nameservers to Netlify's `dns*.p07.nsone.net`; that would blank the
+   zone and break mail. In the GoDaddy DNS records table, change only:
+
+   | Action | Type | Name | Value |
+   | ------ | ---- | ---- | ----- |
+   | Edit the parked record | A | `@` | `75.2.60.5` (Netlify load balancer) |
+   | Edit | CNAME | `www` | `<site-name>.netlify.app` |
+   | Add | CNAME | `dev` | `dev--<site-name>.netlify.app` |
+
+   Netlify will flag that the domain does not use Netlify DNS — expected, continue.
 6. **HTTPS** — *Domain management → HTTPS* → *Verify DNS configuration* →
    *Provision certificate*. Do this after DNS has propagated so the certificate
    covers the apex, `www` and `dev`.

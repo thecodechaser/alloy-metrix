@@ -1,4 +1,4 @@
-// Marks a non-production deploy (dev.allowmetrix.in, previews) as noindex so
+// Marks a non-production deploy (dev.alloymetrix.in, previews) as noindex so
 // the unfinished site never shows up in search results.
 // Runs after `vite build`, rewriting artefacts inside dist/.
 import { writeFileSync } from 'node:fs'
