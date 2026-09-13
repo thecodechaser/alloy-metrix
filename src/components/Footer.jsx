@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { company, divisions } from '../data/company.js'
+import { company, credit, divisions } from '../data/company.js'
 import { categoriesInDivision } from '../data/products.js'
 
 export default function Footer() {
@@ -81,7 +81,20 @@ export default function Footer() {
           <p>
             © {year} {company.name}. All rights reserved.
           </p>
-          <p>{company.strapline}</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <p>{company.strapline}</p>
+            <p>
+              {credit.label}{' '}
+              <a
+                href={credit.url}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-forest-800"
+              >
+                {credit.name}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

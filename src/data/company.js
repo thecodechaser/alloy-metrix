@@ -25,6 +25,13 @@ export const company = {
   hours: 'Monday – Saturday, 9:30 am – 6:30 pm IST',
 }
 
+// Footer credit line.
+export const credit = {
+  label: 'Developed by',
+  name: 'thecodechaser',
+  url: 'https://thecodechaser.com',
+}
+
 export const divisions = [
   {
     id: 'analytical',
