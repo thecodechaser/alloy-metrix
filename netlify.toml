@@ -1,0 +1,59 @@
+# Netlify configuration — AlloyMetrix coming-soon site
+#
+# Branch  ->  Environment
+#   main  ->  production   : https://allowmetrix.in
+#   dev   ->  branch deploy: https://dev.allowmetrix.in  (served noindex)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# --- Contexts -------------------------------------------------------------
+
+[context.production]
+  command = "npm run build"
+
+# The `dev` branch deploy must never be indexed by search engines.
+[context.dev]
+  command = "npm run build && npm run seo:noindex"
+
+# Any other branch / deploy preview: also keep it out of search results.
+[context.branch-deploy]
+  command = "npm run build && npm run seo:noindex"
+
+[context.deploy-preview]
+  command = "npm run build && npm run seo:noindex"
+
+# --- Redirects ------------------------------------------------------------
+
+# SPA fallback (single page today, future-proof for client-side routing).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# --- Headers --------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Fingerprinted build assets can be cached forever.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

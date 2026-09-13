@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand: dark forge / brushed steel */
+  --color-ink-950: #07080a;
+  --color-ink-900: #0b0d11;
+  --color-ink-800: #12151b;
+  --color-ink-700: #1b1f27;
+  --color-steel-400: #9aa6b6;
+  --color-steel-300: #c2ccd9;
+  --color-ember-500: #e06a2b;
+  --color-ember-400: #f08b4c;
+
+  --animate-shimmer: shimmer 7s linear infinite;
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-drift: drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { background-position: -160% 50%; }
+  100% { background-position: 260% 50%; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink-950);
+  color: var(--color-steel-300);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Brushed-metal wordmark */
+.metal-text {
+  background-image: linear-gradient(
+    100deg,
+    #6f7a89 0%,
+    #aab4c2 18%,
+    #ffffff 30%,
+    #dfe6ee 38%,
+    #8d98a7 52%,
+    #ffffff 66%,
+    #b6c0cd 78%,
+    #6f7a89 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .metal-text { background-position: 40% 50%; }
+}
