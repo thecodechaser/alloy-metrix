@@ -191,7 +191,7 @@ export default function ProductDetail() {
       {(product.sections?.length || product.specs || product.table) && (
         <section className="wrap grid gap-14 border-t border-line py-16 lg:grid-cols-12 lg:gap-16">
           {product.sections?.length > 0 && (
-            <div className="grid content-start gap-12 lg:col-span-7">
+            <div className="grid min-w-0 content-start gap-12 lg:col-span-7">
               {product.sections.map((section) => (
                 <div key={section.title}>
                   <h2 className="display text-[1.3rem]">{section.title}</h2>
@@ -206,7 +206,7 @@ export default function ProductDetail() {
           )}
 
           {product.specs && (
-            <div className={product.sections?.length ? 'lg:col-span-5' : 'lg:col-span-12'}>
+            <div className={`min-w-0 ${product.sections?.length ? 'lg:col-span-5' : 'lg:col-span-12'}`}>
               <h2 className="display text-[1.3rem]">Specifications</h2>
               <div className="mt-5">
                 <SpecTable specs={product.specs} />
@@ -215,7 +215,7 @@ export default function ProductDetail() {
           )}
 
           {product.table && (
-            <div className="lg:col-span-12">
+            <div className="min-w-0 lg:col-span-12">
               <h2 className="display text-[1.3rem]">{product.table.title}</h2>
               <div className="mt-5">
                 <ComparisonTable table={product.table} />
