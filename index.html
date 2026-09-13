@@ -62,7 +62,8 @@
     <div id="root"></div>
 
     <!-- Static copy of the enquiry form so Netlify detects it at build time. -->
-    <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
       <input type="text" name="name" />
       <input type="text" name="organisation" />
       <input type="tel" name="phone" />
