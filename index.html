@@ -3,32 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#07080a" />
+    <meta name="theme-color" content="#0b3b1e" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/img/brand/mark-am.png" />
 
-    <title>AlloyMetrix — Coming Soon</title>
-    <meta name="description" content="AlloyMetrix is building precision measurement and quality intelligence for the metals and alloys industry. Our website is launching soon." />
+    <title>Alloy Metrix — Analytical Precision. Agricultural Progress.</title>
+    <meta
+      name="description"
+      content="Alloy Metrix supplies non-destructive testing instruments, handheld alloy analysers and Kisan King Agro agricultural implements across India — with certification, technical guidance and after-sales support."
+    />
     <link rel="canonical" href="https://alloymetrix.in/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="AlloyMetrix" />
-    <meta property="og:title" content="AlloyMetrix — Coming Soon" />
-    <meta property="og:description" content="Precision measurement and quality intelligence for the metals and alloys industry. Launching soon." />
+    <meta property="og:site_name" content="Alloy Metrix" />
+    <meta property="og:title" content="Alloy Metrix — Analytical Precision. Agricultural Progress." />
+    <meta
+      property="og:description"
+      content="NDT and analytical instruments, alloy analysers and agricultural implements, supplied across India."
+    />
     <meta property="og:url" content="https://alloymetrix.in/" />
-    <meta property="og:image" content="https://alloymetrix.in/og.svg" />
+    <meta property="og:image" content="https://alloymetrix.in/img/brand/logo-alloymetrix.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AlloyMetrix — Coming Soon" />
-    <meta name="twitter:description" content="Precision measurement and quality intelligence for the metals and alloys industry. Launching soon." />
-    <meta name="twitter:image" content="https://alloymetrix.in/og.svg" />
+    <meta name="twitter:title" content="Alloy Metrix — Analytical Precision. Agricultural Progress." />
+    <meta
+      name="twitter:description"
+      content="NDT and analytical instruments, alloy analysers and agricultural implements, supplied across India."
+    />
+    <meta name="twitter:image" content="https://alloymetrix.in/img/brand/logo-alloymetrix.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Alloy Metrix",
+        "alternateName": "Alloy Metrix — Analytical & Agro Solution",
+        "url": "https://alloymetrix.in/",
+        "logo": "https://alloymetrix.in/img/brand/logo-alloymetrix.png",
+        "description": "Supplier of non-destructive testing instruments, alloy analysers and agricultural implements across India.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Afzalgarh",
+          "addressRegion": "Bijnor, Uttar Pradesh",
+          "addressCountry": "IN"
+        },
+        "telephone": "+917906535262"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Static copy of the enquiry form so Netlify detects it at build time. -->
+    <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="text" name="organisation" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="type" />
+      <input type="text" name="product" />
+      <textarea name="message"></textarea>
+    </form>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
