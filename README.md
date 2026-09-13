@@ -80,7 +80,21 @@ brick red `#8a1608`, brass `#a97c22`.
 
 The form on `/contact` posts to **Netlify Forms** — no backend, no third-party service.
 Submissions appear in the Netlify dashboard under *Forms → enquiry*, and Netlify can email
-them onward (*Forms → Settings → Form notifications*).
+them onward (*Forms → Settings → Form notifications*) — point that notification at
+`sales@alloymetrix.in`.
+
+### Mailboxes
+
+Three addresses are configured in `src/data/company.js`:
+
+| Address                  | Used for                                                        |
+| ------------------------ | --------------------------------------------------------------- |
+| `info@alloymetrix.in`    | `company.email` — header bar, footer, general contact            |
+| `sales@alloymetrix.in`   | `company.salesEmail` — quotations, and the form's fallback link  |
+| `md@alloymetrix.in`      | Listed on the contact page under *Management*                    |
+
+The contact page renders `company.mailboxes`, so removing a line there removes it from the
+site.
 
 Netlify detects the form from the static copy in `index.html`; the React form posts the same
 field names. If a field is added to `src/pages/Contact.jsx`, add it to that hidden form too or

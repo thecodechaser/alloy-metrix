@@ -4,8 +4,16 @@ export const company = {
   legalName: 'Alloy Metrix — Analytical & Agro Solution',
   strapline: 'Analytical Precision. Agricultural Progress.',
   domain: 'alloymetrix.in',
-  // TODO: switch to the branded mailbox (e.g. info@alloymetrix.in) once it is live.
-  email: 'kadirhasan@gmail.com',
+  // Primary address — used in the header bar, footer and as the fallback everywhere else.
+  email: 'info@alloymetrix.in',
+  // Quotations and product enquiries route here.
+  salesEmail: 'sales@alloymetrix.in',
+  // Listed on the contact page, each with the kind of message it is for.
+  mailboxes: [
+    { label: 'General enquiries', address: 'info@alloymetrix.in' },
+    { label: 'Sales & quotations', address: 'sales@alloymetrix.in' },
+    { label: 'Management', address: 'md@alloymetrix.in' },
+  ],
   phone: '+91 79065 35262',
   phoneHref: '+917906535262',
   whatsapp: '917906535262',

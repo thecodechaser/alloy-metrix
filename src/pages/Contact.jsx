@@ -74,10 +74,18 @@ export default function Contact() {
             </div>
             <div className="bg-white p-6">
               <dt className={label}>Email</dt>
-              <dd className="mt-2">
-                <a href={`mailto:${company.email}`} className="break-all text-[1.05rem] text-forest-800">
-                  {company.email}
-                </a>
+              <dd className="mt-3 grid gap-3">
+                {company.mailboxes.map((mailbox) => (
+                  <div key={mailbox.address}>
+                    <p className="text-[0.78rem] text-ink-300">{mailbox.label}</p>
+                    <a
+                      href={`mailto:${mailbox.address}`}
+                      className="break-all text-[0.98rem] text-forest-800 hover:underline hover:underline-offset-4"
+                    >
+                      {mailbox.address}
+                    </a>
+                  </div>
+                ))}
               </dd>
             </div>
             <div className="bg-white p-6">
@@ -196,8 +204,8 @@ export default function Contact() {
                 {status === 'error' && (
                   <p className="border border-brick-700/25 bg-brick-50 px-4 py-3 text-sm text-brick-800">
                     The form could not be submitted. Please email{' '}
-                    <a href={`mailto:${company.email}`} className="underline underline-offset-4">
-                      {company.email}
+                    <a href={`mailto:${company.salesEmail}`} className="underline underline-offset-4">
+                      {company.salesEmail}
                     </a>{' '}
                     or call {company.phone}.
                   </p>

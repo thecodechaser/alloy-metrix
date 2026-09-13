@@ -57,6 +57,11 @@ export default function Footer() {
                 {company.email}
               </a>
             </li>
+            <li>
+              <a href={`mailto:${company.salesEmail}`} className="break-all transition-colors hover:text-forest-800">
+                {company.salesEmail}
+              </a>
+            </li>
             <li className="leading-relaxed">
               {company.address.line1}
               <br />
