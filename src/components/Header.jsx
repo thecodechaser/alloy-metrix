@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { company } from '../data/company.js'
+import { useEnquiryLinks } from '../lib/visitor.jsx'
 
 const nav = [
   { to: '/', label: 'Home', end: true },
@@ -20,6 +21,7 @@ function linkClass({ isActive }) {
 export default function Header() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const enquiry = useEnquiryLinks()
 
   useEffect(() => {
     setOpen(false)
@@ -40,7 +42,7 @@ export default function Header() {
             <a href={`tel:${company.phoneHref}`} className="hover:text-brass-400">
               {company.phone}
             </a>
-            <a href={`mailto:${company.email}`} className="hover:text-brass-400">
+            <a href={enquiry.mailto(company.email)} className="hover:text-brass-400">
               {company.email}
             </a>
           </div>

@@ -161,7 +161,7 @@ export default function Home() {
           <p className="text-center text-[0.72rem] uppercase tracking-[0.18em] text-ink-300">
             Supplying equipment from
           </p>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {partners.map((partner) => (
               <div key={partner.name} className="text-center">
                 <p className="display text-[1.15rem]">{partner.name}</p>

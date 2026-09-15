@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { company, credit, divisions } from '../data/company.js'
 import { categoriesInDivision } from '../data/products.js'
+import { useEnquiryLinks } from '../lib/visitor.jsx'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const enquiry = useEnquiryLinks()
 
   return (
     <footer className="border-t border-line bg-paper">
@@ -53,12 +55,17 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${company.email}`} className="break-all transition-colors hover:text-forest-800">
+              <a href={`tel:${company.altPhoneHref}`} className="transition-colors hover:text-forest-800">
+                {company.altPhone}
+              </a>
+            </li>
+            <li>
+              <a href={enquiry.mailto(company.email)} className="break-all transition-colors hover:text-forest-800">
                 {company.email}
               </a>
             </li>
             <li>
-              <a href={`mailto:${company.salesEmail}`} className="break-all transition-colors hover:text-forest-800">
+              <a href={enquiry.mailto(company.salesEmail)} className="break-all transition-colors hover:text-forest-800">
                 {company.salesEmail}
               </a>
             </li>
