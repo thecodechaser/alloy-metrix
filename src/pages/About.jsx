@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import { Eyebrow, SectionHead } from '../components/ui.jsx'
 import { company, divisions, partners } from '../data/company.js'
+import { useEnquiryLinks } from '../lib/visitor.jsx'
 
 const audiences = [
   'Dealers & distributors',
@@ -13,6 +14,8 @@ const audiences = [
 ]
 
 export default function About() {
+  const enquiry = useEnquiryLinks()
+
   return (
     <>
       <Seo
@@ -119,9 +122,9 @@ export default function About() {
               opportunities, bulk requirements or a customised solution — we are ready to assist
               across India.
             </p>
-            <Link to="/contact" className="btn btn-primary mt-8">
+            <a href={enquiry.mailto(company.email)} className="btn btn-primary mt-8">
               Start an enquiry
-            </Link>
+            </a>
           </div>
           <div className="lg:col-span-7">
             <ul className="grid gap-px border border-line bg-line sm:grid-cols-2">

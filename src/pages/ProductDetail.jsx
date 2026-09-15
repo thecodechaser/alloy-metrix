@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard.jsx'
 import { Tag } from '../components/ui.jsx'
 import { company } from '../data/company.js'
 import { categoryName, getProduct, relatedProducts } from '../data/products.js'
+import { useEnquiryLinks } from '../lib/visitor.jsx'
 
 function SpecTable({ specs }) {
   return (
@@ -70,12 +71,15 @@ export default function ProductDetail() {
   const { slug } = useParams()
   const product = getProduct(slug)
   const [active, setActive] = useState(0)
+  const enquiry = useEnquiryLinks({
+    product: product?.name ?? '',
+    category: product ? categoryName(product.category) : '',
+  })
 
   if (!product) return <Navigate to="/products" replace />
 
   const gallery = product.gallery?.length ? product.gallery : [product.image]
   const image = gallery[Math.min(active, gallery.length - 1)]
-  const enquiry = `/contact?product=${encodeURIComponent(product.name)}`
   const related = relatedProducts(product)
 
   return (
@@ -173,9 +177,9 @@ export default function ProductDetail() {
           )}
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to={enquiry} className="btn btn-primary">
+            <a href={enquiry.mailto(company.email)} className="btn btn-primary">
               Request a quote
-            </Link>
+            </a>
             <a href={`tel:${company.phoneHref}`} className="btn btn-ghost">
               Call {company.phone}
             </a>

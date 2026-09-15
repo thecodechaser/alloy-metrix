@@ -660,7 +660,7 @@ export const analyticalProducts = [
   },
   {
     slug: 'xrf-x-200-alloy',
-    name: 'X-200 Alloy Handheld XRF Analyser',
+    name: 'Alloy Handheld XRF Analyser',
     category: 'alloy-analysis',
     brand: 'SciAps',
     image: '/img/products/xrf-x-200.jpg',
@@ -674,7 +674,7 @@ export const analyticalProducts = [
         items: [
           'Analyses common alloys in 1–2 seconds or less.',
           'Alloys requiring longer test times or two-beam light-element analysis are handled by industry-specific apps.',
-          'Aluminium grades that confound other guns — 3003/3004/3005, cast 356 and 357, 2014/2024 — are easy for the X-200.',
+          'Aluminium grades that confound other guns — 3003/3004/3005, cast 356 and 357, 2014/2024 — are easy for this analyser.',
           'Pre-set testing times measure low concentrations of Cr, Ni and Cu, then calculate their sum.',
           'Operators are not adjusting test times in the field or generating poor data from insufficient testing time.',
         ],

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import { Eyebrow } from '../components/ui.jsx'
 import { company, enquiryTypes } from '../data/company.js'
+import { useEnquiryLinks } from '../lib/visitor.jsx'
 
 const field =
   'mt-2 w-full border border-line-strong bg-white px-4 py-3 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-300 focus:border-forest-800'
@@ -12,6 +13,7 @@ export default function Contact() {
   const [params] = useSearchParams()
   const product = params.get('product') ?? ''
   const [status, setStatus] = useState('idle')
+  const enquiry = useEnquiryLinks({ product })
 
   const onSubmit = async (event) => {
     event.preventDefault()
@@ -57,16 +59,13 @@ export default function Contact() {
           <h2 className="display text-[1.3rem]">Direct lines</h2>
           <dl className="mt-6 grid gap-px border border-line bg-line">
             <div className="bg-white p-6">
-              <dt className={label}>Phone &amp; WhatsApp</dt>
+              <dt className={label}>WhatsApp</dt>
               <dd className="mt-2">
-                <a href={`tel:${company.phoneHref}`} className="text-[1.05rem] text-forest-800">
-                  {company.phone}
-                </a>
                 <a
-                  href={`https://wa.me/${company.whatsapp}`}
+                  href={enquiry.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-1 block text-sm text-ink-500 underline underline-offset-4 hover:text-forest-800"
+                  className="text-[1.05rem] text-forest-800 underline underline-offset-4"
                 >
                   Message on WhatsApp
                 </a>
@@ -79,7 +78,7 @@ export default function Contact() {
                   <div key={mailbox.address}>
                     <p className="text-[0.78rem] text-ink-300">{mailbox.label}</p>
                     <a
-                      href={`mailto:${mailbox.address}`}
+                      href={enquiry.mailto(mailbox.address)}
                       className="break-all text-[0.98rem] text-forest-800 hover:underline hover:underline-offset-4"
                     >
                       {mailbox.address}
@@ -204,7 +203,7 @@ export default function Contact() {
                 {status === 'error' && (
                   <p className="border border-brick-700/25 bg-brick-50 px-4 py-3 text-sm text-brick-800">
                     The form could not be submitted. Please email{' '}
-                    <a href={`mailto:${company.salesEmail}`} className="underline underline-offset-4">
+                    <a href={enquiry.mailto(company.salesEmail)} className="underline underline-offset-4">
                       {company.salesEmail}
                     </a>{' '}
                     or call {company.phone}.
@@ -215,7 +214,7 @@ export default function Contact() {
                   <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
                     {status === 'sending' ? 'Sending…' : 'Send enquiry'}
                   </button>
-                  <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-ghost">
+                  <a href={enquiry.whatsapp} target="_blank" rel="noreferrer" className="btn btn-ghost">
                     WhatsApp instead
                   </a>
                 </div>

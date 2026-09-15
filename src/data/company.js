@@ -16,6 +16,9 @@ export const company = {
   ],
   phone: '+91 79065 35262',
   phoneHref: '+917906535262',
+  // Second line, listed alongside the primary number.
+  altPhone: '+91 74569 12012',
+  altPhoneHref: '+917456912012',
   whatsapp: '917906535262',
   address: {
     line1: 'Afzalgarh',
@@ -71,8 +74,7 @@ export const categories = [
 
 export const partners = [
   { name: 'Magnafield', note: 'NDT instruments' },
-  { name: 'SciAps', note: 'Handheld XRF & LIBS' },
-  { name: 'MR Chemie', note: 'MPT & DPT consumables' },
+  { name: 'PMI', note: 'Handheld XRF & LIBS' },
   { name: 'Kisan King Agro', note: 'Agricultural implements since 1985' },
 ]
 
