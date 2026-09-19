@@ -180,8 +180,13 @@ export default function ProductDetail() {
             <a href={enquiry.mailto(company.email)} className="btn btn-primary">
               Request a quote
             </a>
-            <a href={`tel:${company.phoneHref}`} className="btn btn-ghost">
-              Call {company.phone}
+            <a
+              href={enquiry.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost"
+            >
+              Message on WhatsApp
             </a>
           </div>
           {product.warranty && (
