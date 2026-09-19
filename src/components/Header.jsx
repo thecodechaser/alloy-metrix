@@ -36,9 +36,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm">
-      <div className="hidden bg-forest-900 text-white md:block">
-        <div className="wrap flex items-center justify-between py-2 text-[0.72rem] tracking-wide">
-          <div className="flex items-center gap-6">
+      <div className="bg-forest-900 text-white">
+        <div className="wrap flex items-center justify-between gap-4 py-2 text-[0.72rem] tracking-wide">
+          <div className="flex items-center gap-4 md:gap-6">
             <a href={`tel:${company.phoneHref}`} className="hover:text-brass-400">
               {company.phone}
             </a>
@@ -46,7 +46,8 @@ export default function Header() {
               {company.email}
             </a>
           </div>
-          <p className="text-white/70">
+          {/* Too long to sit beside the contacts on a phone. */}
+          <p className="hidden text-white/70 md:block">
             Authorised sales &amp; distribution partner — Kisan King Agro Implements
           </p>
         </div>
