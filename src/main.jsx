@@ -9,6 +9,9 @@ import ProductDetail from './pages/ProductDetail.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import { initAnalytics } from './lib/analytics.js'
+
+initAnalytics()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
