@@ -115,6 +115,17 @@ Workflow: feature branch → PR into `dev` → client reviews on `dev.alloymetri
 never be indexed. `scripts/sitemap.mjs` regenerates `dist/sitemap.xml` from the catalogue on
 every build, so new products are listed without anyone maintaining the file.
 
+## Analytics
+
+Visits are tracked with [OpenPanel](https://openpanel.dev) on **production only**
+(`src/lib/analytics.js`). It records page views (including client-side route changes) and
+clicks on outgoing links such as phone, email and WhatsApp.
+
+Tracking is switched on by the `VITE_OPENPANEL_CLIENT_ID` environment variable, which is set
+in Netlify for the **Production** deploy context only. As a second guard the script also
+refuses to load unless the page is served from `alloymetrix.in` / `www.alloymetrix.in`, so
+`dev.alloymetrix.in`, deploy previews and `localhost` never send data.
+
 ## DNS
 
 DNS stays on GoDaddy's nameservers (`ns35`/`ns36.domaincontrol.com`) so the existing GoDaddy
